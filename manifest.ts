@@ -12,5 +12,14 @@ export default Manifest({
   functions: [],
   workflows: [],
   outgoingDomains: [],
-  botScopes: ["commands", "chat:write", "chat:write.public"],
+  datastores: [ShoutOutDataStore],
+  botScopes: [
+    "chat:write",
+    "chat:write.public",
+    "datastore:read",
+    "datastore:write",
+    "channels:read",
+    "triggers:write",
+    "triggers:read",
+  ],
 });
