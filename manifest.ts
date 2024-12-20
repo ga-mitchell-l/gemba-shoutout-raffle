@@ -7,8 +7,8 @@ import { Manifest } from "deno-slack-sdk/mod.ts";
  */
 export default Manifest({
   name: "gemba-shoutout-raffle",
-  description: "A blank template for building Slack apps with Deno",
-  icon: "assets/default_new_app_icon.png",
+  description: "Workflow to keep track of shoutouts and choose a monthly raffle winner",
+  icon: "assets/app_icon.png",
   functions: [],
   workflows: [],
   outgoingDomains: [],
