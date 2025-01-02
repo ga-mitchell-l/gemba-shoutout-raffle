@@ -1,4 +1,5 @@
 import { Manifest } from "deno-slack-sdk/mod.ts";
+import { ShoutOutWorkflow } from "./workflows/shout_out.ts";
 
 /**
  * The app manifest contains the app's configuration. This
@@ -7,19 +8,21 @@ import { Manifest } from "deno-slack-sdk/mod.ts";
  */
 export default Manifest({
   name: "gemba-shoutout-raffle",
-  description: "Workflow to keep track of shoutouts and choose a monthly raffle winner",
+  description:
+    "App to keep track of shoutouts and choose a monthly raffle winner",
   icon: "assets/app_icon.png",
   functions: [],
-  workflows: [],
-  outgoingDomains: [],
-  datastores: [ShoutOutDataStore],
-  botScopes: [
-    "chat:write",
-    "chat:write.public",
-    "datastore:read",
-    "datastore:write",
-    "channels:read",
-    "triggers:write",
-    "triggers:read",
-  ],
+  workflows: [ShoutOutWorkflow],
+  botScopes: ["chat:write", "channels:history"],
 });
+// features I would like to do
+// store a list of people who:
+// - have shoutouted
+// - been the subject of a shoutout
+// monthly message sent to channel:
+// - number of shoutouts
+// - number of people giving shoutouts
+// - random raffle prize winner
+// nice to have:
+// - yearly round up of the number of times you have been shoutouted
+// - csv download for PNC for reviews
