@@ -1,38 +1,27 @@
 import { Trigger } from "deno-slack-api/types.ts";
 import { ShoutOutWorkflow } from "../workflows/shout_out.ts";
-import {
-  TriggerContextData,
-  TriggerEventTypes,
-  TriggerTypes,
-} from "deno-slack-api/mod.ts";
+import { TriggerTypes } from "deno-slack-api/mod.ts";
 
 const channel_id = "C085UKLPJLW";
 
 const shoutOutTrigger: Trigger<typeof ShoutOutWorkflow.definition> = {
   type: TriggerTypes.Event,
-  name: "shout out trigger",
-  description: "todo",
+  name: "Shout Out Trigger",
+  description: "Triggers when a message is posted in the channel",
   workflow: "#/workflows/shout_out",
   event: {
-    event_type: TriggerEventTypes.MessagePosted,
+    event_type: "slack#/events/message_posted",
     channel_ids: [channel_id],
     filter: {
-      root: {
-        operator: "AND",
-        inputs: [{
-          operator: "NOT",
-          inputs: [{
-            // Filter out posts by apps
-            statement: "{{data.user_id}} == null",
-          }],
-        }],
-      },
       version: 1,
+      root: {
+        statement: "1 == 1",
+      },
     },
   },
   inputs: {
     channel_id: {
-      value: TriggerContextData.Event.MessagePosted.channel_id,
+      value: "{{data.channel_id}}",
     },
   },
 };

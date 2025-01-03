@@ -13,7 +13,22 @@ export default Manifest({
   icon: "assets/app_icon.png",
   functions: [],
   workflows: [ShoutOutWorkflow],
-  botScopes: ["chat:write", "channels:history"],
+  botScopes: [
+    "commands",
+    "channels:join",
+    "channels:manage",
+    "channels:history",
+    "channels:read",
+    "groups:write",
+    "im:write",
+    "im:history",
+    "mpim:write",
+    "chat:write",
+    "chat:write.public",
+    "triggers:write",
+    "triggers:read",
+  ],
+  events: [],
 });
 // features I would like to do
 // store a list of people who:
